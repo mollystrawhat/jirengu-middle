@@ -10,6 +10,15 @@ NaN是什么? 有什么特别之处?
 break与continue有什么区别
 void 0 和 undefined在使用场景上有什么区别
 
+>JavaScript 定义了几种数据类型? 哪些是原始类型?哪些是复杂类型?原始类型和复杂类型的区别是什么?
+typeof和instanceof的作用和区别?
+如何判断一个变量是否是数字、字符串、布尔、函数
+NaN是什么? 有什么特别之处?
+如何把非数值转化为数值?
+==与===有什么区别
+break与continue有什么区别
+void 0 和 undefined在使用场景上有什么区别
+
 ## 1. JavaScript 定义了几种数据类型? 哪些是原始类型?哪些是复杂类型?原始类型和复杂类型的区别是什么?
 >6种类型
  - 数值 （number）：整数和小数
@@ -39,7 +48,9 @@ void 0 和 undefined在使用场景上有什么区别
 
 堆存储
 由于复杂值的大小会改变，所以不能将其存放在栈中，否则会降低变量查询速度，因此其存储在**堆(heap)**中，存储在变量处的值是一个指针，指向存储对象的内存处。
-
+![](http://upload-images.jianshu.io/upload_images/5804931-d8664f268362dea8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+详细请看：
+[JS里基本类型（值）和复杂类型（引用）有什么区别？](https://zhuanlan.zhihu.com/p/22400319)
 2)访问方式
 原始值是作为不可细化的值进行存储和操作的，引用它们会**转移其值**
 复杂值是通过引用进行存储和操作的，而不是实际的值。创建一个包含复杂对象的变量时，**其值是内存中的一个引用地址**。引用一个复杂对象时，使用它的名称(即变量或对象属性)通过内存中的引用地址获取该对象值
@@ -87,7 +98,7 @@ typeof null // "object"
 instanceof区分数组和对象。
 而typeof的第5 项返回的都是对象，不能判断是否为数组。
 ```
-[]1,2,3] instanceof  Array   //true
+[1,2,3] instanceof  Array   //true
 var obj={}
 obj instanceof Array      //false
 ```
@@ -270,14 +281,12 @@ typeof优先级高于+，typeof a 为number，("number" + b) || (c >0)
 var d = 5;
 var data = d ==5 && console.log('bb')
 console.log(data)
-//输出bb
-//data ==5 && console.log('bb')，又因为&&的左结合，所以得出bb
+//输出undefined
 ```
 ```
 var data2 = d = 0 || console.log('haha')
 console.log(data2)
-//输出haha
-//
+//输出undefined
 ```
 ``` 
 var x = !!"Hello" + (!"world", !!"from here!!");
