@@ -5,12 +5,22 @@
 ## 1、写一个函数，返回从min到max之间的 随机整数，包括min不包括max 
 ```
 //获取[15,20)之间随机整数
-var num=15+Math.floor(Math.random()*5)
+var scopeArr = [15,20]
+function duringNum(){
+var num = scopeArr[0] + Math.floor(Math.random()*(scopeArr[1]-scopeArr[0]))
+return num;
+}
+var random=duringNum()
 ```
 ## 2、写一个函数，返回从min都max之间的 随机整数，包括min包括max 
 ```
 获取[15,20]之间随机整数
-var num=15+Math.floor(Math.random()*6)
+var scopeArr = [15,20]
+function duringNum(){
+var num = scopeArr[0] + Math.floor(Math.random()*(scopeArr[1]-scopeArr[0]+1))
+return num;
+}
+var random=duringNum()
 ```
 
 
