@@ -57,8 +57,8 @@ addEventListener添加会按照添加顺序执行，而attachEvent添加多个�
 
 
 ## 题目3： 解释IE事件冒泡和DOM2事件传播机制？
-![](http://7xpvnv.com2.z0.glb.qiniucdn.com/4bc08396-78b0-48e3-a8bb-f846e86e9d73)
-![](http://7xpvnv.com2.z0.glb.qiniucdn.com/8ddedb2e-f55e-4872-bd36-79c44b71d3f1)
+![](http://upload-images.jianshu.io/upload_images/5804931-65cbe419a8dbebe5?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![](http://upload-images.jianshu.io/upload_images/5804931-192ce32b4c1c33be?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 IE事件冒泡：事件开始时由最具体的元素接收，然后逐级向上传播到较为不具体的元素，如上图一中所示，如果是一个点击事件，当点击div时，是一层一层的向父级元素传递
 
 DOM2级事件规定事件流包括三个阶段，**事件捕获阶段**，**处于目标阶段**，**事件冒泡阶段**，首先发生的是事件捕获，为截取事件提供机会，然后是实际目标接收事件，最后是冒泡阶段
@@ -164,9 +164,9 @@ function addAfter(){
 ## 题目7： 补全代码，要求：当鼠标放置在li元素上，会在img-preview里展示当前li元素的data-img对应的图片。
 ```
 <ul class="ct">
-    <li data-img="1.png">鼠标放置查看图片1</li>
-    <li data-img="2.png">鼠标放置查看图片2</li>
-    <li data-img="3.png">鼠标放置查看图片3</li>
+    <li data-img="http://a.hiphotos.baidu.com/zhidao/pic/item/1b4c510fd9f9d72aa05bac6cd22a2834349bbb80.jpg">鼠标放置查看图片1</li>
+    <li data-img="http://www.qqleju.com/uploads/allimg/140326/26-045728_826.jpg">鼠标放置查看图片2</li>
+    <li data-img="http://img1.3lian.com/2015/w2/12/d/83.jpg">鼠标放置查看图片3</li>
 </ul>
 <div class="img-preview"></div>
 <script>
@@ -174,20 +174,23 @@ function addAfter(){
 var ct = document.querySelector('.ct');
 var preview = document.querySelector('.img-preview');
 
-ct.addEventListener('mouseover',event);
-
-function event(e){
+ct.addEventListener('mouseover',eventOver);
+ct.addEventListener('mouseout',eventOut);
+  
+function eventOver(e){
     var img = e.target.getAttribute('data-img');
-    preview.innerHTML =  <img src = "' + img + '">;
+    preview.innerHTML =  '<img src = "' + img + '">';
 }
-
-
+function eventOut(e){
+     preview.innerHTML = '';
+}
 </script>
 ```
 
 题目8： 在 github 上创建个人项目，把视频里事件兼容的函数写法放入项目，在 Readme.md里描述项目(选做题目)
 ```
 <script>
+//绑定事件
     function  bindEvent(node,type,handler){
         if(node.addEventListener){
             node.addEventListener(type,handler);
@@ -196,7 +199,7 @@ function event(e){
             node.attachEvent('on'+type,handler);
         }
     }
-
+//解除事件
     function removeEvent(node,type,handler){
         if(node.removeEventListener){
             node.removeEventListener(type,handler);
@@ -205,16 +208,10 @@ function event(e){
             node.detachEvent('on'+type,handler);
         }
     }
-
+//获取target
     function getTarget(e){
         return e.target || e.srcElement;
     }
 
 </script>
 ```
-
-
-
-
-
-
