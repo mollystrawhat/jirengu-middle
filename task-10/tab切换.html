@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        ul,li{
+            list-style: none;
+            margin:0;
+            padding:0;
+        }  
+        .wrap .header:after{
+            display: block;
+            content: '';
+            clear: both;
+        }
+        .wrap .header>li{
+            float: left;
+            display: inline-block;
+            width: 70px;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            border: 1px solid #ccc;
+            border-right: 0;
+            cursor:pointer;
+
+        }
+        .wrap .header>li:last-child{
+            border-right: 1px solid #ccc;
+        }
+        .wrap .header>li.active{
+            background: #ccc;
+        }
+        .wrap .content>li{
+            display:none;
+            width: 210px;
+            height: 80px;
+            border: 1px solid #ccc;
+            border-top: 0;
+        }
+        .wrap .content>li.active{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <ul class="header">
+            <li class="active">tab1</li>
+            <li>tab2</li>
+            <li>tab3</li>
+        </ul>
+        <ul class="content">
+            <li class="active">ct1</li>
+            <li>ct2</li>
+            <li>ct3</li>
+        </ul>
+    </div>
+
+
+
+    <script>
+        var tabs = document.querySelectorAll('.wrap .header>li');
+        var cts = document.querySelectorAll('.wrap .content>li');
+
+        tabs.forEach(function(tab){
+            tab.addEventListener('click',function(){
+                tabs.forEach(function(node){
+                    node.classList.remove('active');
+                })
+
+                this.classList.add('active');
+//清除tab的li所有active，并给当前li加上active
+                var index = [].indexOf.call(tabs,this);
+//获取index，使序号一一对应
+                cts.forEach(function(node){
+                node.classList.remove('active')
+                })
+//清除ct的li所有active
+                cts[index].classList.add('active')
+                })
+//对应序号的li添加active
+        })
+
+
+
+
+
+
+
+    </script>    
+</body>
+</html>
