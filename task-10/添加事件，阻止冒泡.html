@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        #btn {
+            border-radius: 3px;
+            outline:none;
+        }
+        .dialog{
+            display:none;
+            position:fixed;
+            top:0;
+            right:0;
+            bottom:0;
+            left:0;
+            background: #aaa ;
+            z-index: -2;
+        }
+        .ct {
+            position:absolute;
+            top:50%;
+            left:50%;
+            transform:translate(-50%,-50%);
+            width:350px;
+            border:1px solid #ccc;
+            border-radius: 3px;
+            background: #fff;
+        }
+        .header {
+            border-bottom: 1px solid #ccc;
+        }
+        .header a {
+            float: right;
+            margin-top: -20px;
+            margin-right: 5px;
+            text-decoration: none;
+            color:#888;
+            font-size: 20px;
+        }
+        .header h3,.content p {
+            margin-left: 10px;
+        } 
+        .content>button{
+            float: right;
+            margin-right:5px;
+            border-radius: 2px;
+            outline: none;
+        }
+        .open {
+            display:block;
+        }
+
+
+        
+    </style>
+</head>
+<body>
+    <button id="btn">点我1</button>
+    <div class="dialog">
+        <div class="ct">
+            <div class="header">
+                <a class="close" href="#">×</a>
+                <h3>我是标题</h3>
+            </div>
+            <div class="content">
+                <p>我是内容1</p>
+                <button class="confirm">确定</button>
+                <button class="cancel">取消</button>
+                <p>我是内容2</p>
+            </div>
+        </div>
+    </div>
+        
+
+
+
+    <script>
+    var btn = document.querySelector('#btn');
+    var dialog = document.querySelector('.dialog')
+    var ct = document.querySelector('.ct');
+    var close = document.querySelector('.close');
+    var cancel = document.querySelector('.cancel')
+
+    btn.addEventListener('click', function(){
+        dialog.classList.add('open')
+    })
+
+    close.addEventListener('click', function(){
+        dialog.classList.remove('open')
+    })
+
+    dialog.addEventListener('click', function(){
+        dialog.classList.remove('open')
+    })
+    ct.addEventListener('click', function(event){
+        event.stopPropagation()
+    })
+
+    cancel.addEventListener('click', function(){
+        dialog.classList.remove('open')
+    })
+
+
+
+
+    </script>    
+</body>
+</html>
