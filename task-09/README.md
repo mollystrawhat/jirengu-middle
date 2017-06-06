@@ -4,7 +4,9 @@
  - 添加多个事件处理程序区别：
 Dom2级：可以添加多个事件处理程序
 Dom0级：为一个事件添加多个事件处理程序时，后面的程序会覆盖前面的。
-
+ - 是否可选事件模型
+Dom2级：可以选择是在捕获阶段（true）和冒泡阶段（false）
+Dom0级：只能在冒泡阶段
  - 删除绑定在元素上的事件处理程序
 
 
@@ -68,6 +70,14 @@ DOM2级事件规定事件流包括三个阶段，**事件捕获阶段**，**处�
 
 
 ## 题目4： 如何阻止事件冒泡？ 如何阻止默认事件？
+ - 支持DOM2浏览器
+阻止冒泡e.stopPropagation();
+阻止默认事件event.preventDefault()
+
+ - IE浏览器
+阻止冒泡e.cancelBubble = true;
+阻止默认事件event.returnValue = false;
+
 ```
 阻止事件冒泡
 function stopPropagation(event){
